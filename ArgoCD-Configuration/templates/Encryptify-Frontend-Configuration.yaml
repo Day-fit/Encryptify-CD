@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: encryptify-frontend-configuration
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  project: default
+  source:
+    path: Encryptify-Frontend
+    repoURL: https://github.com/Day-fit/Encryptify-CD.git
+    targetRevision: HEAD
+    helm:
+      releaseName: encryptify-frontend
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: encryptify
