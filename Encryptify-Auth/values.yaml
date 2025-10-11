@@ -1,0 +1,7 @@
+replicaCount: 1
+profiles: [prod]
+auth:
+  existingSecretName: "encryptify-app-config"
+image:
+  repo: ghcr.io/day-fit/encryptify-auth
+  tag: 0.0.1 # Will be overwritten by GitHub actions (see `upload-charts.yaml`)

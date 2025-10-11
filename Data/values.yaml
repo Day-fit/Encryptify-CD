@@ -1,0 +1,31 @@
+global:
+  security:
+    allowInsecureImages: true
+
+postgresql:
+  auth:
+    existingSecret: data-config
+    secretKeys:
+      adminPasswordKey: postgres-password
+      userPasswordKey: password
+    database: encryptify_prod
+    username: encryptifyapp
+    enablePostgresUser: true
+  image:
+    repository: bitnamilegacy/postgresql
+    tag: 17.6.0-debian-12-r4
+
+redis:
+  replica:
+    enabled: false
+  auth:
+    existingSecret: data-config
+    existingSecretPasswordKey: redis-password
+  usePassword: true
+  image:
+    repository: bitnamilegacy/redis
+    tag: 8.2.1-debian-12-r0
+
+minio:
+  mode: standalone
+  existingSecret: data-config
